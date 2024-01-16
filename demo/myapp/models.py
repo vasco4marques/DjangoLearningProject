@@ -4,8 +4,35 @@ from django.db import models
 
 #Correr no terminal "python manage.py makemigrations" e depois "python manage.py migrate" para o django fazer as alterações à db sem a estragar-mos
 
-class TodoItem(models.Model):
-    title = models.CharField(max_length=200)
-    completed = models.BooleanField(default=False)
+# Cada class é uma tabela numa base de dados
+
+# Podem haver funções dentro das classes
+
+# Para adicionar dados com a shell basta
+# t = ToDoList(name="Algo") # Adiciona uma linha à tabela ToDoList
+# t.save()
+
+# Para adicionar um item (como é foreign key) usa-se:
+# t.item_set.create(parametros = algo)
+# Ex: t.item_set.create(text="Go to the mall", complete=False) 
+
+
+
+
+class ToDoList(models.Model):
+    name = models.CharField(max_length=200)
+ 
+
+    def __str__(self):
+        return self.name
+    
+
+class Item(models.Model):
+    todoList = models.ForeignKey(ToDoList, on_delete=models.CASCADE)
+    text = models.CharField(max_length=200)
+    complete = models.BooleanField()
+    
+    def __str__(self):
+        return self.text
 
 

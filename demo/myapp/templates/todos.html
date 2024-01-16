@@ -3,7 +3,7 @@
 <ul>
     {% for todo in todos %}
     <li>
-        {{ todo.title }}: {% if todo.completed %} Completed {% else %}Not Completed{% endif %}
+        {{ todo.Item.text }}: {% if todo.Item.completed %} Completed {% else %}Not Completed{% endif %}
         {% comment %} O que está dentro do {{}} é tratado como uma variavel {% endcomment %}
     </li>
     {% endfor %}
