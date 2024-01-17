@@ -8,13 +8,22 @@ from django.db import models
 
 # Podem haver funções dentro das classes
 
-# Para adicionar dados com a shell basta
+# Para adicionar dados com a shell basta (python manage.py shell)
+# from myapp.models import ...
+
+
 # t = ToDoList(name="Algo") # Adiciona uma linha à tabela ToDoList
 # t.save()
 
 # Para adicionar um item (como é foreign key) usa-se:
 # t.item_set.create(parametros = algo)
 # Ex: t.item_set.create(text="Go to the mall", complete=False) 
+
+# Para procurar items na shell podemos usar ToDoList.objects.filter()
+# Ex: t = ToDoList.objects
+# t.all()
+# t.filter(name__startswith="algo")
+# Existem muitos destes __filtro 
 
 
 

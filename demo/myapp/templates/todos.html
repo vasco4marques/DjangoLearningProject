@@ -1,10 +1,10 @@
-{% extends "base.html" %} {% block content %}
-<h1>Todo List </h1>
+{% extends "base.html" %} 
+{% block content %}
+<h1>Todo Lists </h1>
 <ul>
-    {% for todo in todos %}
+    {% for todo in listas %}
     <li>
-        {{ todo.Item.text }}: {% if todo.Item.completed %} Completed {% else %}Not Completed{% endif %}
-        {% comment %} O que está dentro do {{}} é tratado como uma variavel {% endcomment %}
+        <a href ="{{todo.name}}">{{todo.name}}</a>
     </li>
     {% endfor %}
 </ul>
