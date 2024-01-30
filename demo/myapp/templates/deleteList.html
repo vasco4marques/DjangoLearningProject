@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Delete a List{% endblock %}Delete a List
+
+{% block content %}
+    <h1 class="text-4xl">Delete a list</h1>
+    <form class="my-4" action="/Delete-a-list", method = "get">
+        <ul class="list-none">
+            {% for item in form %}
+                <li>{{item.label}}: {{item}}</li>
+            {% endfor %}
+        </ul>
+        <button class="my-4 p-3 bg-red-500/80 rounded font-semibold" type="submit", name="Save"> Delete this list</button>
+    </form>
+{% endblock content %}
+
+
+

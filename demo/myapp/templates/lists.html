@@ -1,0 +1,19 @@
+{% extends "base.html" %} 
+{% block title %} All ToDo Lists {% endblock title %} All ToDo Lists 
+{% block content %}
+<div class="flex-col text-center">
+    <h1 class="text-6xl my-4">Todo Lists</h1>
+    <ul class="list-none text-2xl" >
+        {% for todo in listas %}
+        <li class="hover:underline">
+            <a href ="{{todo.name}}">{{todo.name}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="pt-4 font-semibold">
+        <button class="p-3 bg-green-500/90 rounded cd "><a class="" href="/Create-new-list" > Add new List + </a></button>
+        <button class="p-3 bg-red-500/90 rounded " ><a class="" href="/Delete-a-list"> Delete a List - </a></button>
+    </div>
+</div>
+
+{% endblock %}    

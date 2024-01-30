@@ -1,0 +1,19 @@
+ {% extends "base.html" %}
+
+{% block title %}Create an Account{% endblock title %}
+
+{% block content %}
+    
+    <form method = "post" class="form-group my-4">
+        {% csrf_token %}
+        <ul class="list-none space-y-2">
+            {% for item in form %}
+            <li>
+                {{item.label}}: {{item}}
+            </li>
+            {% endfor %}
+        </ul> 
+        
+        <button class="bg-green-500/80 font-semibold p-3 rounded my-4" type="sumbit">Register</button>
+    </form>
+{% endblock content %}

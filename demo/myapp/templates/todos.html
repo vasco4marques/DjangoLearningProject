@@ -1,11 +1,37 @@
-{% extends "base.html" %} 
+{% extends 'base.html' %}
+{% block title %} {{name}} - All ToDo's{% endblock title %}
 {% block content %}
-<h1>Todo Lists </h1>
-<ul>
-    {% for todo in listas %}
-    <li>
-        <a href ="{{todo.name}}">{{todo.name}}</a>
-    </li>
-    {% endfor %}
-</ul>
-{% endblock %}    
+<div>
+    <h1 class="text-4xl py-4">{{name}}</h1>
+    <form method="post" action="/todos/{{name}}">
+        {% csrf_token %}
+        <ul class="py-4">
+            {% for todo in todos %}
+                {% if todo.complete == True %}
+                    <li>
+                        {{todo.text}} : <input  type="checkbox" value="clicked" name="c{{todo.id}}" checked>
+                    </li>                
+                {% else %}
+                    <li>
+                        {{todo.text}} : <input  type="checkbox" value="clicked" name="c{{todo.id}}">
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        
+        <div class="py-4">
+           <button class="rounded bg-blue-500 p-3" type="submit" name="save" value="save">Save</button>
+            <div class="py-2 flex">
+                <input dir="ltr" class="rounded-s-lg" label="New Item" type="text" name="new">
+                <button dir="rtl" class="bg-green-500/80 p-3 rounded-s-lg" type="submit" name="newItem" value="newItem">Add Item</button>
+            </div>
+            <button class="bg-red-500/80 font-semibold p-3 rounded" type="submit" name="remove" value="remove">Remove Finished</button> 
+        </div>
+        
+
+    </form>
+</div>
+
+    
+
+{% endblock %}

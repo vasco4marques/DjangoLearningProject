@@ -1,38 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+  <html lang="en">
+  {% load static tailwind_tags %}
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      {% block title %}
-        Django App
-      {% endblock %}
-    </title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"  rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% tailwind_css %}
+    <title>{% block title %}ToDo List Manager{% endblock title %}</title>
   </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">My Django App</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="http://127.0.0.1:8000/todos/">Todos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-        </ul>
+
+    <body class="bg-zinc-100">
+      <div id="content" name="content">
+        <div class="flex justify-between m-5">
+          <h1 class="text-red-500 text-2xl"><a href="/">My Todos</a></h1>
+          <div class="flex justify-center space-x-4 text-2xl ">
+            <a class="hover:text-red-500" href="/todos">Todos</a>
+            <a class="hover:text-red-500" href="/register">Register</a>
+          </div>
+          
+        </div>
+        
+
+        <div class="border-t-2 mx-5 py-2 ">
+          {% block content%}
+          {% endblock content %}
+        </div>
       </div>
-    </nav>
-    <div class="container">{% block content %} {% endblock %}</div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" ></script>
-  </body>
-</html>
+    </body>
+  </html>

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% comment %} 
+Existem vários métpdps de as como as_table, as_p vertical ou as_ul como uma lista {% endcomment %}
+
+{% comment %} No método do Form usa-se "Post" quando precisamos de encriptação nos dados que enviamos para o servidor (ex passwords) e "Get" {% endcomment %}
+{% block title %}New List{% endblock title %}
+{% block content %}
+    <h1 class="text-4xl py-4">Create New ToDo List</h1>
+    <div class="py-4">
+        <form method = "post" action="/Create-new-list/">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button  class="my-4 bg-green-500/80 p-3 rounded" type="submit", name="save" > Create New </button> 
+        </form>
+    </div>
+    
+
+
+
+{% endblock content %}
