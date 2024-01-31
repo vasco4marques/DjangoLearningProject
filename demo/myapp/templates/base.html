@@ -14,15 +14,31 @@
           <h1 class="text-red-500 text-2xl"><a href="/">My Todos</a></h1>
           <div class="flex justify-center space-x-4 text-2xl ">
             <a class="hover:text-red-500" href="/todos">Todos</a>
-            <a class="hover:text-red-500" href="/register">Register</a>
+            {% if user.is_authenticated %}
+              <form method="post" action="/logout/">
+                {% csrf_token %}
+                <button type="submit">Log Out</button>
+              </form>
+            {% else %}
+            <a class="hover:text-red-500" href="/login">Login</a>
+              {% endif %}
+            
           </div>
           
         </div>
         
 
         <div class="border-t-2 mx-5 py-2 ">
-          {% block content%}
-          {% endblock content %}
+          {% if user.is_authenticated %}
+            {% block content%}
+            {% endblock content %}
+          {% else %}
+            {% block login %}
+            <h1 class="py-2 text-4xl">Hi, you are not logged in...</h1>
+            <p class="text-4xl">Login to see your todos</p>
+            {% endblock login %}
+          {% endif %}
+          
         </div>
       </div>
     </body>

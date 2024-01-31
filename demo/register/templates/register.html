@@ -2,7 +2,7 @@
 
 {% block title %}Create an Account{% endblock title %}
 
-{% block content %}
+{% block login %}
     
     <form method = "post" class="form-group my-4">
         {% csrf_token %}
@@ -16,4 +16,4 @@
         
         <button class="bg-green-500/80 font-semibold p-3 rounded my-4" type="sumbit">Register</button>
     </form>
-{% endblock content %}
+{% endblock login %}

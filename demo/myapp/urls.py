@@ -8,6 +8,6 @@ urlpatterns = [
     path("Create-new-list/",views.newList, name = "newList"),
     path("Delete-a-list/", views.removeList, name = "DeleteList"),
     path("todos/<str:name>" , views.todos ,name="List"),
-    path("register/", regView.register, name="Register")
-    
+    path("register/", regView.register, name="Register"),
+   
 ]

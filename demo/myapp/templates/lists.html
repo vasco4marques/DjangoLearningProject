@@ -4,7 +4,7 @@
 <div class="flex-col text-center">
     <h1 class="text-6xl my-4">Todo Lists</h1>
     <ul class="list-none text-2xl" >
-        {% for todo in listas %}
+        {% for todo in user.todolist.all %}
         <li class="hover:underline">
             <a href ="{{todo.name}}">{{todo.name}}</a>
         </li>

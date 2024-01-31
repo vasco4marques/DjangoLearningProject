@@ -1,5 +1,11 @@
 {% extends 'base.html' %} {% block title %} Home Page {% endblock %}
 {% block content %}
-    <p class ="text-9xl"> This is the home page</p>
-
+    <div class="">    
+        <p class ="mb-5 text-9xl">Hi, this is your ToDo List Manager</p>
+        {% if user.is_authenticated %}
+            <p class="text-4xl">Go to the Todos tab to see and manage your todo lists</p>
+        {% else %}
+            <p class="text-4xl">Login to see your todos</p>
+        {% endif %}   
+    </div>
 {% endblock %}

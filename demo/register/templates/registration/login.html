@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Log In{% endblock title %}
+
+{% block login %}
+    <h1 class="text-4xl my-3">Log In</h1>
+    <form class="my-4" method="post">
+        {% csrf_token %}
+        {% for item in form %}
+            <p class="py-3">{{item.label}}: {{item}}</p>
+        {% endfor %}
+        <button type="submit" class="rounded my-4 p-3 bg-green-500/80 font-semibold">Log In</button>
+        <p>Don't have an account? Create one 
+            <a class="text-red-500 hover:underline" href="/register">here</a>
+        </p>
+    </form>
+{% endblock login %}
+
+
+

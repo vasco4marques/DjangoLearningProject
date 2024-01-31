@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 class RegisterForm(UserCreationForm):
-    email = forms.EmailField()
+    email = forms.EmailField(required=False)
     # O css deste form vem do CrispyForms instalado pelo comando "pip install django-crispy-forms". Depois temos de ir ao settings.py e colocar "crispy_forms" nas installed apps e adicionar esta variavel : "CRISPY_TEMPLATE_PACK = "bootstrap5""
     CRISPY_TEMPLATE_PACK = "bootstrap5"
     # Cada vez que guardarmos RegisterForm temos que guardar no model User estes dados

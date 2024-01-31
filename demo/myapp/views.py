@@ -11,14 +11,13 @@ def home(request):
     return render(request, "home.html",{})
 
 def todolists(request):
-    lista = ToDoList.objects.all()
-    return render(request, "lists.html", {"listas":lista})
+    return render(request, "lists.html")
 
 
 def saveAll(request,name):
     newName = name.replace("%20"," ")
-    lista= ToDoList.objects.get(name=newName)
-    todos = lista.item_set.all()
+    user = request.user
+    todos = ToDoList.objects.get(user=user).item_set.all()
 
     for item in todos:
         if request.POST.get("c"+str(item.id)) == "clicked":
@@ -26,10 +25,6 @@ def saveAll(request,name):
         else:
             item.complete=False
         item.save()
-
-
-
-
 
 def todos(request, name):   
     newName = name.replace("%20"," ")
@@ -83,8 +78,9 @@ def newList(request):
             if var:
                 return HttpResponse("<h1>Não podem haver 2 listas com o mesmo nome <a href = '/todyos'>Back to Listas</a></h1>")          
             
-            t = ToDoList(name = n)
+            t = ToDoList(name=n)
             t.save()
+            request.user.todolist.add(t)
             return HttpResponseRedirect('/todos')    
     else:
         form = CreateNewList()

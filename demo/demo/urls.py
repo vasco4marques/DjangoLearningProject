@@ -20,6 +20,7 @@ from django.urls import path, include
 urlpatterns = [
     path('__reload__', include('django_browser_reload.urls')),
     path('admin/', admin.site.urls),
-    path("",include("myapp.urls")) #Sempre que se for para o path "", é forwarded para myapps.urls onde é handled.
+    path("",include("myapp.urls")), #Sempre que se for para o path "", é forwarded para myapps.urls onde é handled.
+    path("",include("django.contrib.auth.urls"))
     
 ]
